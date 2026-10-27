@@ -1,0 +1,8 @@
+# Packages whose install scripts are needed: esbuild (used by tsx and vitest) downloads its native
+# binary, and the embedded-postgres binary packages restore the symlinks in their lib directory.
+onlyBuiltDependencies:
+  - esbuild
+  - "@embedded-postgres/linux-x64"
+  - "@embedded-postgres/linux-arm64"
+  - "@embedded-postgres/darwin-arm64"
+  - "@embedded-postgres/darwin-x64"
