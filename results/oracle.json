@@ -1,0 +1,87 @@
+{
+  "name": "oracle",
+  "questions": 500,
+  "correct": 500,
+  "ex": 100,
+  "byDifficulty": {
+    "moderate": {
+      "n": 32,
+      "correct": 32,
+      "ex": 100
+    },
+    "challenging": {
+      "n": 460,
+      "correct": 460,
+      "ex": 100
+    },
+    "simple": {
+      "n": 8,
+      "correct": 8,
+      "ex": 100
+    }
+  },
+  "byDatabase": {
+    "california_schools": {
+      "n": 49,
+      "correct": 49,
+      "ex": 100
+    },
+    "card_games": {
+      "n": 69,
+      "correct": 69,
+      "ex": 100
+    },
+    "codebase_community": {
+      "n": 31,
+      "correct": 31,
+      "ex": 100
+    },
+    "debit_card_specializing": {
+      "n": 14,
+      "correct": 14,
+      "ex": 100
+    },
+    "european_football_2": {
+      "n": 31,
+      "correct": 31,
+      "ex": 100
+    },
+    "financial": {
+      "n": 46,
+      "correct": 46,
+      "ex": 100
+    },
+    "formula_1": {
+      "n": 55,
+      "correct": 55,
+      "ex": 100
+    },
+    "student_club": {
+      "n": 37,
+      "correct": 37,
+      "ex": 100
+    },
+    "superhero": {
+      "n": 50,
+      "correct": 50,
+      "ex": 100
+    },
+    "thrombosis_prediction": {
+      "n": 86,
+      "correct": 86,
+      "ex": 100
+    },
+    "toxicology": {
+      "n": 32,
+      "correct": 32,
+      "ex": 100
+    }
+  },
+  "costUsd": 0,
+  "costPer1kQuestions": 0,
+  "meanSeconds": 0,
+  "meanModelCalls": 0,
+  "meanQueries": 0,
+  "errors": 0,
+  "misses": []
+}
