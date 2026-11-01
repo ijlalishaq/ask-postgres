@@ -1,0 +1,93 @@
+question_id,db_id,class,pattern,note
+0,california_schools,same answer,float precision,read the stored float4 percent column instead of dividing the counts; equal to 6 places
+2,california_schools,same answer,extra column,added the school name next to the rate
+4,california_schools,model,district rows,no rtype = 'S' filter so a district row came seventh
+6,california_schools,model,ignored hint,returned a fraction where the evidence says times 100
+14,california_schools,question,two sources,lowest grade taken from schools.gsserved; gold uses frpm Low Grade and they disagree
+24,california_schools,model,wrong column,question names the field 'School Type' (frpm); used schools.soctype
+29,california_schools,model,wrong table,question says use the meal program records (frpm); filtered on schools columns
+33,california_schools,same answer,numeric vs double,47.6666666666666667 vs 47.666666666666664
+34,california_schools,model,district rows,no rtype = 'S' filter
+40,california_schools,same answer,float precision,FRPM share divided in float4; every row matches to the shown digits
+41,california_schools,question,two sources,school names differ between frpm and schools (121 rows both ways)
+43,california_schools,model,district rows,no rtype = 'S' filter
+46,california_schools,question,gold reading,gold counts any status containing Provision 2; question excludes multi-provision entries
+51,card_games,model,wrong table,counted sets instead of card printings
+52,card_games,model,format,left the newline inside the rules text although asked for one line
+67,card_games,model,card vs printing,counted ruling rows repeated per printing
+69,card_games,model,domain,took 'future' as the newest frame version; it is the 2007 frame
+70,card_games,model,domain,same frame version mistake
+71,card_games,model,card vs printing,distinct uuid instead of distinct card name
+74,card_games,model,card vs printing,distinct id instead of distinct card name
+82,card_games,model,card vs printing,counted printings
+87,card_games,model,card vs printing,counted ruling rows repeated per printing
+88,card_games,model,card vs printing,counted ruling rows repeated per printing
+92,card_games,question,gold reading,question says alphabetical order of ids; model sorted numerically
+93,card_games,model,wrong column,grouped by types instead of the type line and did not keep only the top
+106,card_games,model,misread,summed base set size over all sets in the block not just the translated ones
+109,card_games,model,card vs printing,distinct id instead of distinct card name
+110,card_games,model,card vs printing,averaged over printings
+117,card_games,model,card vs printing,distinct id instead of distinct card name
+120,codebase_community,same answer,numeric vs double,-9.5440156260524012 vs -9.544015626052403
+142,codebase_community,question,gold reading,'youngest account' read as most recently created; gold uses the owner's age
+145,codebase_community,model,wrong table,counted rows in votes instead of users.upvotes
+146,codebase_community,question,gold reading,link counted on relatedpostid; gold uses postid
+148,codebase_community,model,misread,listed every editor instead of only the top
+150,debit_card_specializing,same answer,float precision,734.72 vs 734.71 from float4 sums
+157,debit_card_specializing,same answer,shape,one row per currency instead of one row with two columns
+158,debit_card_specializing,same answer,float precision,float4 sum vs double sum; differs by 465 out of 338 million
+168,european_football_2,same answer,numeric vs double,0.8000000000000000 vs 0.7999999999999972
+179,european_football_2,model,dropped zeros,players with no matches left out
+181,european_football_2,question,gold reading,'if several tie list all' read as top only; gold lists every club
+182,european_football_2,model,misread,used away wins instead of away defeats
+186,european_football_2,model,misread,averaged over players who appeared instead of the whole player table
+195,financial,model,id for name,returned district_id instead of the district name
+197,financial,same answer,numeric vs double,430.4545454545454545 vs 430.45454545454544
+199,financial,model,id for name,returned district_id instead of the district name
+201,financial,same answer,numeric vs double,25.3001912227906152 vs 25.300191222790616
+211,financial,question,gold reading,model kept only debit transactions as payments; gold counts every transaction
+212,financial,model,id for name,home district as an id
+216,financial,model,misread,averaged over clients instead of over districts
+218,financial,model,id for name,district id instead of name
+220,financial,model,id for name,district id instead of name
+221,financial,model,misread,kept only SIPO standing orders
+223,financial,question,gold error,question asks for the year as text; gold returns a number
+224,financial,model,id for name,district id instead of name plus an extra loan_id column
+233,financial,model,misread,RANK where the question describes DENSE_RANK
+235,financial,model,misread,total covers all outgoing payments instead of those to other banks
+246,formula_1,same answer,rounding,rounded to 2 places without being asked
+263,formula_1,same answer,format,pit stop length in milliseconds instead of the duration text
+273,formula_1,same answer,shape,two columns instead of one row per forename
+276,formula_1,model,dropped zeros,seasons with no pit stops left out
+290,formula_1,question,gold error,model converted start times to local time as the evidence says; gold compares UTC times
+318,student_club,model,misread,hard-coded the date and dropped the Vice President filter
+324,student_club,model,ignored hint,counted expense rows instead of the items listed in each
+327,student_club,model,ignored hint,did not split the comma-separated items
+329,student_club,model,ignored hint,did not split the comma-separated items
+343,superhero,same answer,numeric vs double,202.6153846153846154 vs 202.6153846153846
+352,superhero,model,dropped nulls,missed heroes with a null race_id
+357,superhero,same answer,numeric vs double,156709.086206896552 vs 156709.08620689655
+365,superhero,same answer,shape,one row per gender instead of two columns
+377,superhero,model,dropped zeros,eye colour with a zero count left out
+379,superhero,model,dropped nulls,inner join on alignment dropped heroes with none
+382,thrombosis_prediction,same answer,numeric vs double,0.22000000000000000000 vs 0.22
+383,thrombosis_prediction,model,list column,diagnosis = 'SLE' where the column holds a list
+393,thrombosis_prediction,model,misread,required SSA and RNP on the same lab row instead of the same patient
+400,thrombosis_prediction,question,gold reading,36 vs 35 patients depending on how diagnosis separators are parsed
+405,thrombosis_prediction,same answer,rounding,rounded to 2 places without being asked
+406,thrombosis_prediction,same answer,shape,one row per sex with the zero row missing; gold is one row with two columns
+411,thrombosis_prediction,model,list column,diagnosis = 'SLE' and counted visits instead of patients
+417,thrombosis_prediction,same answer,column order,same rows with the columns in a different order
+419,thrombosis_prediction,same answer,numeric vs double,41.6 vs 41.60
+420,thrombosis_prediction,same answer,shape,one row per admission status instead of two columns
+438,thrombosis_prediction,question,gold reading,model excluded patients who ever had a high GPT ('stayed in the normal range'); gold does not
+448,thrombosis_prediction,model,list column,exact list match missed entries like SLE(...)
+452,thrombosis_prediction,model,list column,LIKE 'SLE%' missed lists where SLE is not first
+454,thrombosis_prediction,model,list column,diagnosis = 'SLE' where the column holds a list
+462,thrombosis_prediction,question,gold reading,gold requires at least one examination; model counted patients with none
+471,toxicology,same answer,shape,one row per element instead of two columns
+478,toxicology,same answer,rounding,rounded to 4 places without being asked
+479,toxicology,same answer,shape,one row per group instead of two columns
+491,toxicology,model,misread,DENSE_RANK without the id tie-break where positions should be 1 2 3 with no ties
+497,toxicology,model,dropped zeros,elements with no qualifying atoms left out
+499,toxicology,model,dropped zeros,element with no bonded atoms left out
