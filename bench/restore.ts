@@ -40,6 +40,10 @@ async function main(): Promise<void> {
     const t0 = Date.now();
     await admin.query(`CREATE DATABASE ${db} ENCODING 'UTF8' LOCALE 'en_US.utf8' TEMPLATE template0`);
     await admin.query(`ALTER DATABASE ${db} SET timezone = 'Asia/Hong_Kong'`);
+    // Sums over real (float4) columns depend on the order rows are added, and a parallel plan
+    // changes that order from run to run with load. Without this a few answers flip between
+    // right and wrong when scored twice.
+    await admin.query(`ALTER DATABASE ${db} SET max_parallel_workers_per_gather = 0`);
     const r = spawnSync(
       "pg_restore",
       ["--exit-on-error", "--no-owner", "--no-acl", "-d", urlFor(db), resolve(DUMPS, `${db}.dump`)],

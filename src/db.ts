@@ -24,6 +24,8 @@ export interface QueryOptions {
   /** Refuse queries whose planner estimate is above this (EXPLAIN total cost). */
   maxCost?: number;
   maxRows?: number;
+  /** Extra settings for this query's transaction, e.g. { max_parallel_workers_per_gather: "2" }. */
+  settings?: Record<string, string>;
 }
 
 export class QueryError extends Error {
@@ -62,6 +64,9 @@ export class Database {
     try {
       await client.query("BEGIN READ ONLY");
       await client.query(`SET LOCAL statement_timeout = ${Math.round(opts.timeoutMs ?? 30_000)}`);
+      for (const [name, value] of Object.entries(opts.settings ?? {})) {
+        await client.query("SELECT set_config($1, $2, true)", [name, value]);
+      }
       if (opts.maxCost !== undefined) {
         const plan = await client.query(extended(`EXPLAIN (FORMAT JSON) ${sql}`));
         const cost = Number(JSON.parse(plan.rows[0]![0]!)[0].Plan["Total Cost"]);
